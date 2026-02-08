@@ -51,7 +51,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     // Tambahkan timestamp agar tidak dicache oleh browser/cloudflare secara agresif
     const urlWithTimestamp = `${GOOGLE_SHEET_CSV_URL}&t=${new Date().getTime()}`;
     
-    Papa.parse(GOOGLE_SHEET_CSV_URL, {
+    Papa.parse(urlWithTimestamp, {
       download: true,
       header: true,
       skipEmptyLines: true, // Skip baris kosong

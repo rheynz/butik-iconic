@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
 import { ChevronLeft, MessageCircle, Check, Shield, Truck, Instagram, PlayCircle } from 'lucide-react';
 import { Product } from '../types';
