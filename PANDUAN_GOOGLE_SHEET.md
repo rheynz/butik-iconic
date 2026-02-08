@@ -15,11 +15,13 @@ Buat sheet baru atau copy template berikut. Pastikan **Baris Pertama (Header)** 
 | F     | `kategori`    | Dress |
 | G     | `foto`        | https://i.imgur.com/foto.jpg |
 | H     | `status`      | available |
+| I     | `video`       | https://instagram.com/p/kodevideo |
 
 > **Catatan:**
 > - **harga**: Tulis angka saja tanpa titik/koma/Rp.
 > - **status**: Isi `available` (ada) atau `sold_out` (habis).
 > - **foto**: Gunakan direct link gambar (akhiran .jpg/.png).
+> - **video** (Opsional): Masukkan link Instagram Reel, TikTok, atau YouTube. Nanti akan muncul tombol "Lihat Video" di halaman produk.
 
 ## 2. Cara Mendapatkan Link CSV (Wajib)
 Website hanya bisa membaca format CSV. Ikuti langkah ini:
@@ -44,10 +46,11 @@ Link harus berakhiran `output=csv`. Contoh:
    ```
 4. Commit & Push ke GitHub. Cloudflare Pages akan otomatis update.
 
-## 4. Tips Foto Produk
-Untuk foto produk, Anda bisa menggunakan layanan hosting gambar gratis atau Google Drive:
+## 4. Tips Foto & Video
 
-**Jika menggunakan Google Drive:**
-Link biasa Google Drive tidak bisa langsung dipakai. Anda harus convert linknya.
-- Link asli: `https://drive.google.com/file/d/ID_GAMBAR/view?usp=sharing`
-- Link untuk website: `https://drive.google.com/uc?export=view&id=ID_GAMBAR`
+**Foto:**
+Gunakan hosting gambar gratis atau Google Drive Direct Link.
+
+**Video:**
+Cukup copy link dari browser/aplikasi (Share -> Copy Link).
+Contoh Link Instagram: `https://www.instagram.com/reel/C3abcde1234/`

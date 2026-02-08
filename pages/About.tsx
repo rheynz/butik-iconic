@@ -8,7 +8,7 @@ const About: React.FC = () => {
         {/* Header Image */}
         <div className="w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-10 shadow-md">
           <img 
-            src="https://picsum.photos/id/445/1200/600" 
+            src="https://i.imgur.com/bD5oT9b.jpeg" 
             alt="Interior Butik Iconic" 
             className="w-full h-full object-cover"
           />
@@ -23,7 +23,7 @@ const About: React.FC = () => {
 
           <h3 className="font-serif text-stone-900">Profil Kami</h3>
           <p>
-            Berdiri sejak 2023, <strong>Butik Iconic</strong> hadir sebagai solusi bagi wanita modern yang menginginkan pakaian berkualitas tinggi dengan harga yang masuk akal. Kami percaya bahwa setiap wanita berhak tampil elegan dan percaya diri tanpa harus menguras dompet.
+            Berdiri sejak 2025, <strong>Butik Iconic</strong> hadir sebagai solusi bagi wanita modern yang menginginkan pakaian berkualitas tinggi dengan harga yang masuk akal. Kami percaya bahwa setiap wanita berhak tampil elegan dan percaya diri tanpa harus menguras dompet.
           </p>
           <p>
             Kami mengkurasi setiap produk dengan ketelitian tinggi, memilih bahan-bahan terbaik seperti satin premium, katun rayon, dan linen yang nyaman dipakai di iklim tropis Indonesia.

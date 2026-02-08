@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 
 const WhatsAppButton: React.FC = () => {
   // Default general chat link
-  const waLink = "https://wa.me/6281234567890?text=Halo%20Admin%20ButikIconic%2C%20saya%20mau%20bertanya%20tentang%20produk%20Anda.";
+  const waLink = "https://wa.me/6285378979991?text=Halo%20Admin%20ButikIconic%2C%20saya%20mau%20bertanya%20tentang%20produk%20Anda.";
 
   return (
     <a

@@ -18,16 +18,31 @@ const Navbar: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  // 🖼️ CARA GANTI LOGO:
+  // 1. Siapkan file logo Anda (format PNG transparan lebih bagus).
+  // 2. Simpan di folder: public/images/logo.png
+  // 3. Ganti src di bawah ini menjadi "/images/logo.png"
+  const LOGO_URL = "https://i.imgur.com/xhtxBKX.png"; 
+
   return (
     <nav className="sticky top-0 z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <ShoppingBag className="h-6 w-6 text-stone-800" />
-            <span className="font-serif text-xl font-bold text-stone-900 tracking-wide">
-              Butik Iconic
-            </span>
+          {/* Logo Section */}
+          <Link to="/" className="flex items-center">
+            {/* Opsi 1: Menggunakan Gambar Logo */}
+            <img 
+              src={LOGO_URL} 
+              alt="Butik Iconic Logo" 
+              className="h-10 w-auto object-contain"
+            />
+            
+            {/* Opsi 2: Jika logo gambar gagal load, bisa aktifkan text fallback ini (opsional) */}
+            {/* 
+            <div className="flex items-center space-x-2 ml-2">
+               <span className="font-serif text-xl font-bold text-stone-900 tracking-wide">Butik Iconic</span>
+            </div> 
+            */}
           </Link>
 
           {/* Desktop Menu */}

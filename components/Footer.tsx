@@ -32,10 +32,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-medium mb-4 uppercase tracking-wider text-sm">Ikuti Kami</h4>
             <div className="flex space-x-4 mb-6">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <a href="https://www.instagram.com/theiconicgirl__/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <a href="https://wa.me/6285378979991" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
                 <MessageCircle className="h-6 w-6" />
               </a>
             </div>

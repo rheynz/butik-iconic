@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       <section className="relative bg-stone-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://picsum.photos/id/1059/1600/900" 
+            src="https://i.imgur.com/bD5oT9b.jpeg" 
             alt="Hero Background" 
             className="w-full h-full object-cover opacity-40"
           />
@@ -108,7 +108,7 @@ const Home: React.FC = () => {
             Admin kami siap membantu Anda menemukan outfit yang paling pas untuk bentuk tubuh Anda via WhatsApp.
           </p>
           <a
-            href="https://wa.me/6281234567890"
+            href="https://wa.me/6285378979991"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center bg-green-600 text-white px-8 py-3 rounded-full font-medium hover:bg-green-700 transition shadow-lg"

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
-import { ChevronLeft, MessageCircle, Check, Shield, Truck } from 'lucide-react';
+import { ChevronLeft, MessageCircle, Check, Shield, Truck, Instagram, PlayCircle } from 'lucide-react';
 import { Product } from '../types';
 
 const ProductDetail: React.FC = () => {
@@ -38,11 +38,26 @@ const ProductDetail: React.FC = () => {
     );
   }
 
+  // Format Harga Jual
   const formattedPrice = new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
     minimumFractionDigits: 0
   }).format(product.harga);
+
+  // Logika Diskon
+  const hasDiscount = product.harga_asli && product.harga_asli > product.harga;
+  let formattedOriginalPrice = '';
+  let discountPercent = 0;
+
+  if (hasDiscount && product.harga_asli) {
+    formattedOriginalPrice = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    }).format(product.harga_asli);
+    discountPercent = Math.round(((product.harga_asli - product.harga) / product.harga_asli) * 100);
+  }
 
   const handleOrder = () => {
     if (!selectedSize) {
@@ -56,7 +71,7 @@ const ProductDetail: React.FC = () => {
 Saya ingin memesan:
 
 Nama Produk : ${product.nama}
-Harga : ${formattedPrice}
+Harga : ${formattedPrice} ${hasDiscount ? '(Diskon)' : ''}
 Ukuran : ${selectedSize}
 Jumlah : 1
 
@@ -64,11 +79,13 @@ Mohon info ketersediaan dan total pembayaran.
 Terima kasih 🙏`;
 
     const encodedMessage = encodeURIComponent(message);
-    const waNumber = "6281234567890"; // Replace with real number
+    const waNumber = "6285378979991"; // Replace with real number
     const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
 
     window.open(waUrl, '_blank');
   };
+
+  const isInstagramLink = (url: string) => url.includes('instagram.com');
 
   return (
     <div className="bg-white min-h-screen py-8">
@@ -83,22 +100,65 @@ Terima kasih 🙏`;
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {/* Image Section */}
+          {/* Image & Video Section */}
           <div className="space-y-4">
-            <div className="aspect-[3/4] bg-stone-100 rounded-lg overflow-hidden border border-stone-100">
+            <div className="aspect-[3/4] bg-stone-100 rounded-lg overflow-hidden border border-stone-100 relative group">
               <img 
                 src={product.foto} 
                 alt={product.nama} 
                 className="w-full h-full object-cover"
               />
+              {/* Badge Overlay */}
+              {hasDiscount && (
+                <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1.5 rounded-full font-bold text-sm shadow-md">
+                  Diskon {discountPercent}%
+                </div>
+              )}
             </div>
+            
+            {/* Video Button Link */}
+            {product.video && (
+              <a 
+                href={product.video}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`flex items-center justify-center gap-2 w-full py-3 rounded-lg font-medium transition-colors border ${
+                  isInstagramLink(product.video) 
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent hover:opacity-90' 
+                    : 'bg-stone-100 text-stone-800 border-stone-200 hover:bg-stone-200'
+                }`}
+              >
+                {isInstagramLink(product.video) ? (
+                  <>
+                    <Instagram className="h-5 w-5" />
+                    <span>Lihat Video Review di Instagram</span>
+                  </>
+                ) : (
+                  <>
+                    <PlayCircle className="h-5 w-5" />
+                    <span>Tonton Video Produk</span>
+                  </>
+                )}
+              </a>
+            )}
           </div>
 
           {/* Info Section */}
           <div>
             <span className="text-sm font-medium text-stone-500 uppercase tracking-wider">{product.kategori}</span>
             <h1 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mt-2 mb-2">{product.nama}</h1>
-            <p className="text-2xl font-semibold text-stone-800 mb-6">{formattedPrice}</p>
+            
+            {/* Price Block */}
+            <div className="flex items-end gap-3 mb-6">
+              <p className="text-3xl font-semibold text-stone-800">{formattedPrice}</p>
+              {hasDiscount && (
+                <div className="flex flex-col mb-1">
+                  <p className="text-lg text-stone-400 line-through decoration-stone-400 font-medium">
+                    {formattedOriginalPrice}
+                  </p>
+                </div>
+              )}
+            </div>
 
             {/* Description */}
             <div className="prose prose-stone mb-8">

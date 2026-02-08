@@ -23,8 +23,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-medium text-stone-900">WhatsApp</h3>
-                  <p className="text-stone-600 mb-1">+62 812 3456 7890</p>
-                  <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" className="text-sm text-green-600 font-medium hover:underline">
+                  <p className="text-stone-600 mb-1">+62 853 7897 9991</p>
+                  <a href="https://wa.me/6285378979991" target="_blank" rel="noreferrer" className="text-sm text-green-600 font-medium hover:underline">
                     Chat Langsung &rarr;
                   </a>
                 </div>
@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-medium text-stone-900">Instagram</h3>
-                  <p className="text-stone-600 mb-1">@butikiconic.id</p>
+                  <p className="text-stone-600 mb-1">@theiconicgirl__</p>
                   <a href="#" className="text-sm text-stone-800 font-medium hover:underline">
                     Follow Kami &rarr;
                   </a>
@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-medium text-stone-900">Email</h3>
-                  <p className="text-stone-600">hello@butikiconic.com</p>
+                  <p className="text-stone-600">kontak@butikiconic.com</p>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Location / Map Placeholder */}
+          {/* Location / Map */}
           <div className="bg-white p-8 rounded-xl shadow-sm border border-stone-100 h-full flex flex-col">
             <h2 className="font-serif text-xl font-bold text-stone-900 mb-6">Lokasi Butik</h2>
             <div className="flex items-start gap-4 mb-6">
@@ -77,18 +77,25 @@ const Contact: React.FC = () => {
               <div>
                 <h3 className="font-medium text-stone-900">Alamat</h3>
                 <p className="text-stone-600">
-                  Jl. Fashion Raya No. 123<br />
-                  Jakarta Selatan, DKI Jakarta 12345
+                  Jl. Semeru Raya No.20,<br /> 
+                  Karangrejo, Kec. Gajahmungkur, <br />
+                  Kota Semarang, Jawa Tengah 50231
                 </p>
               </div>
             </div>
             
-            {/* Fake Map */}
-            <div className="bg-stone-200 w-full h-full min-h-[250px] rounded-lg flex items-center justify-center text-stone-500">
-              <div className="text-center p-4">
-                <MapPin className="h-10 w-10 mx-auto mb-2 opacity-50" />
-                <span>Google Maps Embed Here</span>
-              </div>
+            {/* Google Maps Embed */}
+            <div className="w-full flex-grow min-h-[300px] rounded-lg overflow-hidden border border-stone-200 bg-stone-100">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.9064091645446!2d110.41211167400088!3d-7.0202867687696395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708bbf5d7f131b%3A0xfc209fd10d92bba1!2sBUTIK%20ICONIC%20By%20Neeva%20Nodra!5e0!3m2!1sen!2sid!4v1770585637329!5m2!1sen!2sidhttps://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.458872583561!2d106.81895631476906!3d-6.197939995512762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f41f2d65377d%3A0x6968032c58977d2e!2sPlaza%20Indonesia!5e0!3m2!1sid!2sid!4v1679821234567!5m2!1sid!2sid" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, minHeight: '300px' }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Peta Lokasi Butik Iconic"
+              ></iframe>
             </div>
           </div>
 

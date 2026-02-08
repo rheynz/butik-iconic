@@ -7,7 +7,8 @@ const fallbackProducts: Product[] = [
   {
     id: 1,
     nama: "Contoh: Dress Satin (Data Fallback)",
-    harga: 325000,
+    harga: 250000,
+    harga_asli: 350000, // Contoh data diskon
     deskripsi: "Ini adalah data contoh. Mohon hubungkan Google Sheet Anda sesuai panduan di PANDUAN_GOOGLE_SHEET.md",
     ukuran: ["S", "M", "L"],
     kategori: "Dress",
@@ -62,11 +63,13 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
             .map((row: any) => ({
               id: Number(row.id),
               nama: row.nama,
-              harga: Number(row.harga),
+              harga: Number(row.harga), // Harga Jual (Diskon)
+              harga_asli: row.harga_asli ? Number(row.harga_asli) : undefined, // Harga Coret (Optional)
               deskripsi: row.deskripsi,
               ukuran: row.ukuran ? row.ukuran.split(',').map((u: string) => u.trim()) : [],
               kategori: row.kategori,
               foto: row.foto,
+              video: row.video || '', 
               status: row.status === 'sold_out' ? 'sold_out' : 'available'
             }));
 
