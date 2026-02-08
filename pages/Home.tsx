@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, ShieldCheck, Truck } from 'lucide-react';
-import { products } from '../data/products';
+import { ArrowRight, Star, ShieldCheck, Truck, MessageCircle } from 'lucide-react';
+import { useProducts } from '../context/ProductContext';
 import ProductCard from '../components/ProductCard';
 
 const Home: React.FC = () => {
+  const { products, loading } = useProducts();
+  
   // Get 4 random or specific products for "Featured"
   const featuredProducts = products.slice(0, 4);
 
@@ -78,11 +80,17 @@ const Home: React.FC = () => {
             </Link>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {featuredProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {loading ? (
+             <div className="flex justify-center py-12">
+               <div className="loader"></div>
+             </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {featuredProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
           
           <div className="mt-8 text-center sm:hidden">
              <Link to="/products" className="btn-secondary inline-block border border-stone-800 px-6 py-2 rounded-full text-sm font-medium hover:bg-stone-800 hover:text-white transition">
@@ -113,8 +121,5 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
-// Helper for icon since it is not imported inside the CTA section
-import { MessageCircle } from 'lucide-react';
 
 export default Home;

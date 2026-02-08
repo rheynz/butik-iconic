@@ -1,16 +1,17 @@
 import React, { useState, useMemo } from 'react';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import ProductCard from '../components/ProductCard';
 import { Category } from '../types';
 
 const Products: React.FC = () => {
+  const { products, loading } = useProducts();
   const [selectedCategory, setSelectedCategory] = useState<Category>('All');
-  const categories: Category[] = ['All', 'Dress', 'Atasan', 'Bawahan'];
+  const categories: Category[] = ['All', 'Dress', 'Atasan', 'Bawahan', 'Aksesoris'];
 
   const filteredProducts = useMemo(() => {
     if (selectedCategory === 'All') return products;
     return products.filter(p => p.kategori === selectedCategory);
-  }, [selectedCategory]);
+  }, [selectedCategory, products]);
 
   return (
     <div className="bg-stone-50 min-h-screen pt-8 pb-20">
@@ -40,7 +41,12 @@ const Products: React.FC = () => {
         </div>
 
         {/* Product Grid */}
-        {filteredProducts.length > 0 ? (
+        {loading ? (
+           <div className="flex flex-col items-center justify-center py-20">
+             <div className="loader mb-4"></div>
+             <p className="text-stone-500">Mengambil data terbaru...</p>
+           </div>
+        ) : filteredProducts.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.map(product => (
               <ProductCard key={product.id} product={product} />

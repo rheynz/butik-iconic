@@ -1,5 +1,23 @@
 import { Product } from '../types';
 
+/**
+ * 🛍️ PANDUAN MENGELOLA PRODUK
+ * ==========================
+ * 
+ * File ini berisi daftar semua produk yang tampil di website.
+ * Ubah isi array 'products' di bawah ini untuk menambah, mengedit, atau menghapus produk.
+ * 
+ * 📝 PENJELASAN FIELD:
+ * - id        : Angka unik sebagai identitas produk (Wajib unik, tidak boleh sama).
+ * - nama      : Nama produk yang akan tampil.
+ * - harga     : Harga dalam angka tanpa titik/koma (contoh: 150000 untuk Rp 150.000).
+ * - deskripsi : Penjelasan lengkap tentang produk.
+ * - ukuran    : Daftar ukuran yang tersedia, format ["S", "M", "L"] dsb.
+ * - kategori  : Kategori untuk filter (Pilihan: "Dress", "Atasan", "Bawahan", "Aksesoris").
+ * - foto      : Link gambar. Bisa URL internet (https://...) atau file lokal (/images/nama-file.jpg).
+ * - status    : Status stok. Isi "available" jika ada, atau "sold_out" jika habis.
+ */
+
 export const products: Product[] = [
   {
     id: 1,

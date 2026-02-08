@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import { ProductProvider } from './context/ProductContext';
 
 // Pages
 import Home from './pages/Home';
@@ -23,26 +24,28 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen font-sans text-stone-800 bg-stone-50">
-        <Navbar />
-        
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:id" element={<ProductDetail />} />
-            <Route path="/cara-pesan" element={<HowToOrder />} />
-            <Route path="/tentang" element={<About />} />
-            <Route path="/kontak" element={<Contact />} />
-          </Routes>
-        </main>
+    <ProductProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen font-sans text-stone-800 bg-stone-50">
+          <Navbar />
+          
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/cara-pesan" element={<HowToOrder />} />
+              <Route path="/tentang" element={<About />} />
+              <Route path="/kontak" element={<Contact />} />
+            </Routes>
+          </main>
 
-        <WhatsAppButton />
-        <Footer />
-      </div>
-    </Router>
+          <WhatsAppButton />
+          <Footer />
+        </div>
+      </Router>
+    </ProductProvider>
   );
 };
 

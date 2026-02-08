@@ -1,17 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import { ChevronLeft, MessageCircle, Check, Shield, Truck } from 'lucide-react';
+import { Product } from '../types';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { products, loading } = useProducts();
+  const [product, setProduct] = useState<Product | undefined>(undefined);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const product = products.find(p => p.id === Number(id));
+  useEffect(() => {
+    if (!loading && products.length > 0) {
+      const found = products.find(p => p.id === Number(id));
+      setProduct(found);
+    }
+  }, [id, products, loading]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="loader"></div>
+      </div>
+    );
+  }
 
   if (!product) {
-    return <Navigate to="/products" replace />;
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-stone-50 px-4 text-center">
+        <h2 className="text-2xl font-serif text-stone-900 mb-2">Produk Tidak Ditemukan</h2>
+        <p className="text-stone-600 mb-6">Produk yang Anda cari mungkin sudah dihapus atau link salah.</p>
+        <Link to="/products" className="bg-stone-800 text-white px-6 py-2 rounded-lg hover:bg-stone-700 transition">
+          Kembali ke Koleksi
+        </Link>
+      </div>
+    );
   }
 
   const formattedPrice = new Intl.NumberFormat('id-ID', {
